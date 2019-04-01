@@ -1,0 +1,17 @@
+{% extends "geotracker/base.html" %}
+{% load staticfiles %}
+{% block extra_head %}
+    <script src="{% static "js/geotracker.js" %}"></script>
+    <style>
+        #map {
+            height: 350px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+    </style>
+{% endblock %}
+{% block onloadcall %}index_startup();{% endblock %}
+{% block contents %}
+<div id="map"></div>
+<button type="button" class="btn btn-primary" onclick="single_locate()">Locate</button>
+{% endblock %}
