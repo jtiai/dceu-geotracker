@@ -4,7 +4,7 @@ This is skeleton project for DjangoCon EU 2019 Geotracker.
 
 ## Installation
 
-Clone <https://jtiai.github.com/dceu-geotracker> repository.
+Clone <https://github.com/jtiai/dceu-geotracker> repository.
 
 Provided `docker-compose.yml` and `Dockerfile` will install
 everything needed.
