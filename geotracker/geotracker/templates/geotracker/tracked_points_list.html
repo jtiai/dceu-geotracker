@@ -1,0 +1,24 @@
+{% extends "geotracker/base.html" %}
+{% block contents %}
+<form action="{% url "route-create" %}" method="post">
+{% csrf_token %}
+<table class="table">
+<thead>
+<tr>
+    <th scope="col">Tracking name</th>
+    <th scope="col">Number points</th>
+    <th scope="col"></th>
+</tr>
+</thead>
+<tbody>
+{% for r in track_names %}
+    <tr>
+    <td>{{ r.name }}</td>
+    <td>{{ r.num_points }}</td>
+    <td><button class="btn btn-primary btn-sm" name="name" value="{{ r.name }}">Create Track</button></td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+</form>
+{% endblock %}

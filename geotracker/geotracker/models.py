@@ -25,7 +25,7 @@ class RouteLine(models.Model):
             {
                 "type": "Feature",
                 "geometry": json.loads(self.location.geojson),
-                "properties": {"color": self.color},
+                 "properties": {"color": self.color},
             }
         )
 

@@ -27,9 +27,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
        <li class="nav-item{{ home_page }}">
            <a class="nav-link" href="{% url "tracking-index" %}">Index</a>
+       </li>
+       <li class="nav-item{{ tracked_page }}">
+           <a class="nav-link" href="{% url "tracking-points-list" %}">Tracked points</a>
+       </li>
+       <li class="nav-item{{ tracked_lines_page }}">
+           <a class="nav-link" href="{% url "routes-list" %}">Tracked lines</a>
        </li>
     </ul>
         </div>

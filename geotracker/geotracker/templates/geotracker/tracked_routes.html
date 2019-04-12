@@ -1,0 +1,34 @@
+{% extends "geotracker/base.html" %}
+{% load staticfiles %}
+{% block extra_head %}
+    <script src="{% static "js/geotracker.js" %}"></script>
+    <style>
+        #map {
+            height: 350px;
+            margin-top: 16px;
+            margin-bottom: 16px;
+        }
+    </style>
+{% endblock %}
+{% block onloadcall %}line_startup();{% endblock %}
+{% block contents %}
+<div id="map"></div>
+    <table class="table">
+    <thead>
+<tr>
+<th scope="col">Tracking name</th>
+<th scope="col">Length (m)</th>
+<th scope="col"></th>
+</tr>
+</thead>
+    <tbody>
+{% for r in lines %}
+    <tr>
+    <td>{{ r.name }}</td>
+    <td>{{ r.route_length|floatformat:2 }}</td>
+    <td><button class="btn btn-primary btn-sm" onclick="show_line_on_map({{ r.get_geojson_feature }})">Show on map</button></td>
+    </tr>
+{% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
