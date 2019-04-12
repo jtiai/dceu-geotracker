@@ -21,12 +21,12 @@ You can also deploy to your own server/site but that's not covered here.
 
 Run migrations:
 ```
-docker-compose run --rm web pipenv python manage.py migrate
+docker-compose run --rm web pipenv run python manage.py migrate
 ```
 
 Create superuser:
 ```
-docker-compose run --rm web pipenv python manage.py createsuperuser
+docker-compose run --rm web pipenv run python manage.py createsuperuser
 ```
 
 Start service:
