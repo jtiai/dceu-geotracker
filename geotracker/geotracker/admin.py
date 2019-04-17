@@ -5,8 +5,8 @@ from .models import RouteLine, TrackedPoint
 
 @admin.register(TrackedPoint)
 class TrackedPointAdmin(OSMGeoAdmin):
-    list_display = ("location", "timestamp")
-
+    list_display = ("name", "location", "timestamp")
+    list_filter = ("name",)
 
 @admin.register(RouteLine)
 class RouteLineAdmin(OSMGeoAdmin):

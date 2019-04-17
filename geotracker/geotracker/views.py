@@ -14,6 +14,9 @@ from .models import TrackedPoint, RouteLine
 
 
 class IndexView(TemplateView):
+    """
+    Show index view with a map and tracking buttons.
+    """
     template_name = "geotracker/index.html"
 
     def get_context_data(self, **kwargs):
@@ -24,6 +27,9 @@ class IndexView(TemplateView):
 
 @method_decorator(csrf_exempt, name="dispatch")
 class TrackingPointAPIView(View):
+    """
+    Handle simple API to post geolocation.
+    """
     def post(self, request):
         form = TrackingPointForm(request.POST)
 
@@ -37,6 +43,9 @@ class TrackingPointAPIView(View):
             tp.location = Point(
                 form.cleaned_data["longitude"], form.cleaned_data["latitude"]
             )
+            tp.accuracy = form.cleaned_data["accuracy"]
+            tp.altitude = form.cleaned_data["altitude"]
+            tp.altitude_accuracy = form.cleaned_data["altitude_accuracy"]
 
             tp.save()
 
@@ -45,6 +54,9 @@ class TrackingPointAPIView(View):
 
 
 class TrackingPointsListView(View):
+    """
+    Show list of tracked locations with number of points.
+    """
     def get(self, request):
         track_names = (
             TrackedPoint.objects.values("name")
@@ -60,6 +72,9 @@ class TrackingPointsListView(View):
         )
 
 class RouteCreateView(View):
+    """
+    Create a linestring from individual points.
+    """
     def post(self, request):
         name = request.POST["name"]
         qs = TrackedPoint.objects.filter(name=name)
@@ -71,6 +86,9 @@ class RouteCreateView(View):
 
 
 class RoutesListView(View):
+    """
+    List created linestrings.
+    """
     def get(self, request):
         lines = RouteLine.objects.all()
         return render(
