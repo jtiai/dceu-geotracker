@@ -34,7 +34,7 @@ Start service:
 docker-compose up
 ```
 
-On a second window start serveo or ngrok and route `localhost:8000`
+On a second window start server or ngrok and route `localhost:8000`
 port to https-address.
 
 Verify that you can connect from your mobile device to that address. 
